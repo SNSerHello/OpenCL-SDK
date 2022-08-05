@@ -1,5 +1,107 @@
 # OpenCL<sup>TM</sup> SDK (in development)
 
+## Build in Windows
+
+```bash
+$ cmake .. -G "Visual Studio 15 2017 Win64" ^
+    -DOPENCL_SDK_BUILD_SAMPLES=OFF ^
+    -DCMAKE_INSTALL_PREFIX=../dist/OpenCL-SDK
+$ %comspec% /k "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+$ msbuild /maxcpucount:4 /p:Configuration=Release /p:PreferredToolArchitecture=x64 ALL_BUILD.vcxproj
+$ msbuild /maxcpucount:4 /p:Configuration=Release /p:PreferredToolArchitecture=x64 INSTALL.vcxproj
+```
+
+tree for `dist` folder
+
+```bash
+dist
+\---OpenCL-SDK
+    +---bin
+    |       OpenCL.dll
+    |
+    +---include
+    |   \---CL
+    |       |   cl.h
+    |       |   cl2.hpp
+    |       |   cl_d3d10.h
+    |       |   cl_d3d11.h
+    |       |   cl_dx9_media_sharing.h
+    |       |   cl_dx9_media_sharing_intel.h
+    |       |   cl_egl.h
+    |       |   cl_ext.h
+    |       |   cl_ext_intel.h
+    |       |   cl_gl.h
+    |       |   cl_gl_ext.h
+    |       |   cl_half.h
+    |       |   cl_icd.h
+    |       |   cl_layer.h
+    |       |   cl_platform.h
+    |       |   cl_va_api_media_sharing_intel.h
+    |       |   cl_version.h
+    |       |   opencl.h
+    |       |   opencl.hpp
+    |       |
+    |       \---Utils
+    |               Context.h
+    |               Context.hpp
+    |               Detail.hpp
+    |               Device.hpp
+    |               Error.h
+    |               Error.hpp
+    |               ErrorCodes.h
+    |               Event.h
+    |               Event.hpp
+    |               File.h
+    |               File.hpp
+    |               InteropContext.hpp
+    |               OpenCLUtilsCpp_Export.h
+    |               OpenCLUtils_Export.h
+    |               Platform.hpp
+    |               Utils.h
+    |               Utils.hpp
+    |
+    +---lib
+    |       OpenCL.lib
+    |       OpenCLUtils.lib
+    |       OpenCLUtilsCpp.lib
+    |
+    \---share
+        \---cmake
+            +---OpenCL
+            |       OpenCLConfig.cmake
+            |       OpenCLConfigVersion.cmake
+            |
+            +---OpenCLHeaders
+            |       OpenCLHeadersConfig.cmake
+            |       OpenCLHeadersConfigVersion.cmake
+            |       OpenCLHeadersTargets.cmake
+            |
+            +---OpenCLHeadersCpp
+            |       OpenCLHeadersCppConfig.cmake
+            |       OpenCLHeadersCppConfigVersion.cmake
+            |       OpenCLHeadersCppTargets.cmake
+            |
+            +---OpenCLICDLoader
+            |       OpenCLICDLoaderConfig.cmake
+            |       OpenCLICDLoaderConfigVersion.cmake
+            |       OpenCLICDLoaderTargets-release.cmake
+            |       OpenCLICDLoaderTargets.cmake
+            |
+            +---OpenCLUtils
+            |       OpenCLUtilsConfig.cmake
+            |       OpenCLUtilsConfigVersion.cmake
+            |       OpenCLUtilsTargets-release.cmake
+            |       OpenCLUtilsTargets.cmake
+            |
+            \---OpenCLUtilsCpp
+                    OpenCLUtilsCppConfig.cmake
+                    OpenCLUtilsCppConfigVersion.cmake
+                    OpenCLUtilsCppTargets-release.cmake
+                    OpenCLUtilsCppTargets.cmake
+```
+
+
+
 This is the Khronos OpenCL SDK. It brings together all the components needed to
 develop OpenCL applications:
 
